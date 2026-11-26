@@ -90,6 +90,7 @@ similar = df.assign(avstand=distance).drop(index=stock.name).nsmallest(5, "avsta
 st.subheader("De 5 aktier som har betett sig mest likt")
 other_sector = (similar["sector"] != stock["sector"]).sum()
 st.write(f"{other_sector} av de 5 tillhör en annan sektor än {stock['ticker']}.")
+st.caption("De mest lika aktierna räknas fram direkt utifrån nyckeltalen, så de kan ligga i ett annat kluster om aktien ligger nära gränsen mellan två kluster.")
 
 table = similar[["ticker", "name", "sector", "klustertyp",
                  "avkastning", "volatilitet", "beta", "vinstmarginal"]].copy()
